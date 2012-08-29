@@ -35,7 +35,7 @@
 /** Returns all annotations in the cluster.
  READONLY
  */
-@property(nonatomic, readonly) NSArray *annotationsInCluster;
+@property(unsafe_unretained, nonatomic, readonly) NSArray *annotationsInCluster;
 //
 /// List of annotations in the cluster.
 /** @See annotationsInCluster property*/

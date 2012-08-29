@@ -97,15 +97,12 @@
             annotation.groupTag = kTYPE2;
         }
         
-        [annotation release];
     }
     
     [mapView addAnnotations:[annotationsToAdd allObjects]];
     labelNumberOfAnnotations.text = [NSString stringWithFormat:@"Number of Annotations: %d", [mapView.annotations count]];
     
     // clean
-    [randomLocations release];
-    [annotationsToAdd release];
 }
 
 - (IBAction)clusteringButtonTouchUpInside:(UIButton *)sender {
@@ -134,8 +131,6 @@
     labelNumberOfAnnotations.text = [NSString stringWithFormat:@"Number of Annotations: %d", [mapView.annotations count]];
     
     // clean
-    [randomLocations release];
-    [annotation release];
 }
 
 - (IBAction)changeClusterMethodButtonTouchUpInside:(UIButton *)sender {    
@@ -158,7 +153,6 @@
 - (IBAction)infoButtonTouchUpInside:(UIButton *)sender{
     UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Info" message:@"The size of a cluster-annotation represents the number of annotations it contains and not its size." delegate:nil cancelButtonTitle:@"great!" otherButtonTitles:nil];
     [a show];
-    [a release];
 }
 
 - (IBAction)buttonGroupByTagTouchUpInside:(UIButton *)sender {
@@ -187,7 +181,6 @@
         OCAnnotation *clusterAnnotation = (OCAnnotation *)annotation;
         
         annotationView = (MKAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"ClusterView"];
-        [annotationView retain];
         if (!annotationView) {
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"ClusterView"];
             annotationView.canShowCallout = YES;
@@ -227,7 +220,6 @@
     else if([annotation isKindOfClass:[OCMapViewSampleHelpAnnotation class]]){
         OCMapViewSampleHelpAnnotation *singleAnnotation = (OCMapViewSampleHelpAnnotation *)annotation;
         annotationView = (MKAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"singleAnnotationView"];
-        [annotationView retain];
         if (!annotationView) {
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:singleAnnotation reuseIdentifier:@"singleAnnotationView"];
             annotationView.canShowCallout = YES;
@@ -245,7 +237,6 @@
     // Error
     else{
         annotationView = (MKPinAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"errorAnnotationView"];
-        [annotationView retain];
         if (!annotationView) {
             annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"errorAnnotationView"];
             annotationView.canShowCallout = NO;
@@ -253,7 +244,7 @@
         }
     }
     
-    return [annotationView autorelease];
+    return annotationView;
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay{
@@ -276,7 +267,7 @@
         circleView.lineWidth = 0.5;
     }
     
-    return [circleView autorelease];
+    return circleView;
 }
 
 - (void)mapView:(MKMapView *)aMapView regionDidChangeAnimated:(BOOL)animated{
@@ -311,12 +302,8 @@
         
         CLLocation *loc = [[CLLocation alloc]initWithLatitude:latitude longitude:longitude];
         [coordinates addObject:loc];
-        [loc release];
     }
-    return  [coordinates autorelease];
+    return  coordinates;
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 @end
