@@ -9,6 +9,11 @@
 
 @implementation OCAnnotation
 @synthesize coordinate;
+@synthesize title          = _title;
+@synthesize subtitle       = _subtitle;
+@synthesize mapView        = _mapView;
+@synthesize annotationView = _annotationView;
+@synthesize content        = _content;
 
 
 // Memory
@@ -21,6 +26,20 @@
         annotationsInCluster = [[NSMutableArray alloc] init];
     }
     
+    return self;
+}
+
+/** Init with a coordinate and nil the rest. */
+-(id) initWithContent:(Content*) content
+{
+    //NSLog(@"init111111");
+    self = [super init];
+    if (self!=nil){
+        self.content = content;
+        self.coordinate = content.coordinate;
+        self.mapView = nil;
+        self.annotationView = nil;
+    }
     return self;
 }
 
@@ -38,6 +57,20 @@
     }
     
     return self;
+}
+
+- (MKAnnotationView*)annotationViewInMap:(MKMapView*) aMapView;
+{
+    if (self.annotationView) {
+        self.annotationView.annotation = self;
+    } else {
+        static NSString *viewId = @"AnnotationView";
+        self.annotationView = (AnnotationView*)[aMapView dequeueReusableAnnotationViewWithIdentifier:viewId];
+        if (self.annotationView==nil){
+            self.annotationView = [[AnnotationView alloc] initWithAnnotation:self reuseIdentifier:viewId];
+        }
+    }
+    return self.annotationView;
 }
 
 
@@ -118,6 +151,17 @@
 
 - (void)setCoordinate:(CLLocationCoordinate2D)coord{
     coordinate = coord;
+    
+    // not sure why or when this happens...
+    // Add self to the map, and set self as the annotation for the referenced view.
+    [self.mapView addAnnotation:self];
+    if (_annotationView) {
+        [_annotationView setAnnotation:self];
+    }
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"coordinate=%f,%f", self.coordinate.latitude, self.coordinate.longitude];
 }
 
 @end

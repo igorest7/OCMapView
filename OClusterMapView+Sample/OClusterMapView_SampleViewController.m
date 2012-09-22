@@ -9,6 +9,10 @@
 #import "OClusterMapView_SampleViewController.h"
 #import "OCMapViewSampleHelpAnnotation.h"
 #import <math.h>
+#import "AnnotationView.h"
+#import "AnnotationViewProtocol.h"
+#import "AnnotationProtocol.h"
+#import "MyCalloutView.h"
 
 #define ARC4RANDOM_MAX 0x100000000
 #define kTYPE1 @"Banana"
@@ -172,21 +176,58 @@
 
 // ==============================
 #pragma mark - map delegate
+
+/**
+ * Delegates the SELECTION to the view implementation.
+ */
+- (void)mapView:(MKMapView *)aMapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    // delegate the implementation to the annotation view
+    if ([view conformsToProtocol:@protocol(AnnotationViewProtocol)]) {
+        NSLog(@"%@ conforms", NSStringFromClass([view class]));
+        [((NSObject<AnnotationViewProtocol>*)view) didSelectAnnotationViewInMap:mapView];
+    } else {
+        NSLog(@"%@ DOES NOT conform", NSStringFromClass([view class]));
+    }
+}
+/*
+* Delegates the DESELECTION to the view implementation.
+*/
+- (void)mapView:(MKMapView *)aMapView didDeselectAnnotationView:(MKAnnotationView *)view
+{
+    NSLog(@"%@", [view class]);
+    // delegate the implementation to the annotation view
+    if ([view conformsToProtocol:@protocol(AnnotationViewProtocol)]) {
+        [((NSObject<AnnotationViewProtocol>*)view) didDeselectAnnotationViewInMap:mapView];
+    }
+}
+
+
 - (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>)annotation{
     MKAnnotationView *annotationView;
     
     // if it's a cluster
-    if ([annotation isKindOfClass:[OCAnnotation class]]) {
+    NSLog(@"annotation class %@", [annotation class]);
+    if ([annotation isKindOfClass:[OCAnnotation class]] ) {
         
         OCAnnotation *clusterAnnotation = (OCAnnotation *)annotation;
         
-        annotationView = (MKAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"ClusterView"];
+        Content *content = [Content new];
+        content.calloutView = [MyCalloutView class];
+        content.coordinate = clusterAnnotation.coordinate;
+        content.values = [NSDictionary dictionaryWithObjectsAndKeys:@"Booo!",@"title", nil];
+        
+        clusterAnnotation.content = content;
+        
+        
+        annotationView = (AnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"ClusterView"];
         if (!annotationView) {
-            annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"ClusterView"];
-            annotationView.canShowCallout = YES;
+            annotationView = [[AnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"ClusterView"];
+            //annotationView.canShowCallout = YES;
             annotationView.centerOffset = CGPointMake(0, -20);
         }
         //calculate cluster region
+        
         //CLLocationDistance clusterRadius = mapView.region.span.longitudeDelta * mapView.clusterSize * 111000; //static circle size of cluster
         CLLocationDistance clusterRadius = mapView.region.span.longitudeDelta/log(mapView.region.span.longitudeDelta*mapView.region.span.longitudeDelta) * log(pow([clusterAnnotation.annotationsInCluster count], 4)) * mapView.clusterSize * 50000; //circle size based on number of annotations in cluster
         
@@ -233,6 +274,10 @@
         else if([singleAnnotation.groupTag isEqualToString:kTYPE2]){
             annotationView.image = [UIImage imageNamed:@"orange.png"];
         }
+    }
+    
+    else if ([annotation conformsToProtocol:@protocol(AnnotationProtocol)]){
+            return [((NSObject<AnnotationProtocol>*)annotation) annotationViewInMap:mapView];
     }
     // Error
     else{

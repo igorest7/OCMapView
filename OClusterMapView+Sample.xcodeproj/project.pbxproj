@@ -38,6 +38,14 @@
 		88F58CF414E9C6960007E6FA /* oranges@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F58CEC14E9C6960007E6FA /* oranges@2x.png */; };
 		88F58CFC14E9CE520007E6FA /* regular.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F58CFA14E9CE520007E6FA /* regular.png */; };
 		88F58CFD14E9CE520007E6FA /* regular@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F58CFB14E9CE520007E6FA /* regular@2x.png */; };
+		B27486B1160D8D7A005CEF43 /* AnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B274869E160D8D7A005CEF43 /* AnnotationView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B27486B2160D8D7A005CEF43 /* BaseCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = B27486A1160D8D7A005CEF43 /* BaseCalloutView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B27486B3160D8D7A005CEF43 /* CalloutAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B27486A3160D8D7A005CEF43 /* CalloutAnnotation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B27486B4160D8D7A005CEF43 /* CalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = B27486A5160D8D7A005CEF43 /* CalloutView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B27486B5160D8D7A005CEF43 /* CalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B27486A6160D8D7A005CEF43 /* CalloutView.xib */; };
+		B27486B6160D8D7A005CEF43 /* Content.m in Sources */ = {isa = PBXBuildFile; fileRef = B27486A8160D8D7A005CEF43 /* Content.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B27486BA160D8D7A005CEF43 /* MyCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = B27486AE160D8D7A005CEF43 /* MyCalloutView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B27486BB160D8D7A005CEF43 /* MyCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B27486AF160D8D7A005CEF43 /* MyCalloutView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +91,22 @@
 		88F58CEC14E9C6960007E6FA /* oranges@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oranges@2x.png"; sourceTree = "<group>"; };
 		88F58CFA14E9CE520007E6FA /* regular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = regular.png; sourceTree = "<group>"; };
 		88F58CFB14E9CE520007E6FA /* regular@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "regular@2x.png"; sourceTree = "<group>"; };
+		B274869C160D8D7A005CEF43 /* AnnotationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationProtocol.h; sourceTree = "<group>"; };
+		B274869D160D8D7A005CEF43 /* AnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationView.h; sourceTree = "<group>"; };
+		B274869E160D8D7A005CEF43 /* AnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationView.m; sourceTree = "<group>"; };
+		B274869F160D8D7A005CEF43 /* AnnotationViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationViewProtocol.h; sourceTree = "<group>"; };
+		B27486A0160D8D7A005CEF43 /* BaseCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCalloutView.h; sourceTree = "<group>"; };
+		B27486A1160D8D7A005CEF43 /* BaseCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCalloutView.m; sourceTree = "<group>"; };
+		B27486A2160D8D7A005CEF43 /* CalloutAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutAnnotation.h; sourceTree = "<group>"; };
+		B27486A3160D8D7A005CEF43 /* CalloutAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutAnnotation.m; sourceTree = "<group>"; };
+		B27486A4160D8D7A005CEF43 /* CalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutView.h; sourceTree = "<group>"; };
+		B27486A5160D8D7A005CEF43 /* CalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutView.m; sourceTree = "<group>"; };
+		B27486A6160D8D7A005CEF43 /* CalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalloutView.xib; sourceTree = "<group>"; };
+		B27486A7160D8D7A005CEF43 /* Content.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Content.h; sourceTree = "<group>"; };
+		B27486A8160D8D7A005CEF43 /* Content.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Content.m; sourceTree = "<group>"; };
+		B27486AD160D8D7A005CEF43 /* MyCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCalloutView.h; sourceTree = "<group>"; };
+		B27486AE160D8D7A005CEF43 /* MyCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCalloutView.m; sourceTree = "<group>"; };
+		B27486AF160D8D7A005CEF43 /* MyCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCalloutView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +173,7 @@
 				88F58CE414E9C6960007E6FA /* sample_pins */,
 				88098246142FBF04002AD1BD /* Supporting Files */,
 				88098267142FC02A002AD1BD /* OCMapView */,
+				B2748699160D8D7A005CEF43 /* map */,
 			);
 			path = "OClusterMapView+Sample";
 			sourceTree = "<group>";
@@ -195,6 +220,29 @@
 				88F58CFB14E9CE520007E6FA /* regular@2x.png */,
 			);
 			path = sample_pins;
+			sourceTree = SOURCE_ROOT;
+		};
+		B2748699160D8D7A005CEF43 /* map */ = {
+			isa = PBXGroup;
+			children = (
+				B274869C160D8D7A005CEF43 /* AnnotationProtocol.h */,
+				B274869D160D8D7A005CEF43 /* AnnotationView.h */,
+				B274869E160D8D7A005CEF43 /* AnnotationView.m */,
+				B274869F160D8D7A005CEF43 /* AnnotationViewProtocol.h */,
+				B27486A0160D8D7A005CEF43 /* BaseCalloutView.h */,
+				B27486A1160D8D7A005CEF43 /* BaseCalloutView.m */,
+				B27486A2160D8D7A005CEF43 /* CalloutAnnotation.h */,
+				B27486A3160D8D7A005CEF43 /* CalloutAnnotation.m */,
+				B27486A4160D8D7A005CEF43 /* CalloutView.h */,
+				B27486A5160D8D7A005CEF43 /* CalloutView.m */,
+				B27486A6160D8D7A005CEF43 /* CalloutView.xib */,
+				B27486A7160D8D7A005CEF43 /* Content.h */,
+				B27486A8160D8D7A005CEF43 /* Content.m */,
+				B27486AD160D8D7A005CEF43 /* MyCalloutView.h */,
+				B27486AE160D8D7A005CEF43 /* MyCalloutView.m */,
+				B27486AF160D8D7A005CEF43 /* MyCalloutView.xib */,
+			);
+			path = map;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -265,6 +313,8 @@
 				88F58CF414E9C6960007E6FA /* oranges@2x.png in Resources */,
 				88F58CFC14E9CE520007E6FA /* regular.png in Resources */,
 				88F58CFD14E9CE520007E6FA /* regular@2x.png in Resources */,
+				B27486B5160D8D7A005CEF43 /* CalloutView.xib in Resources */,
+				B27486BB160D8D7A005CEF43 /* MyCalloutView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +333,12 @@
 				88098272142FC02A002AD1BD /* OCDistance.m in Sources */,
 				88098273142FC02A002AD1BD /* OCMapView.m in Sources */,
 				88098276142FC058002AD1BD /* OCMapViewSampleHelpAnnotation.m in Sources */,
+				B27486B1160D8D7A005CEF43 /* AnnotationView.m in Sources */,
+				B27486B2160D8D7A005CEF43 /* BaseCalloutView.m in Sources */,
+				B27486B3160D8D7A005CEF43 /* CalloutAnnotation.m in Sources */,
+				B27486B4160D8D7A005CEF43 /* CalloutView.m in Sources */,
+				B27486B6160D8D7A005CEF43 /* Content.m in Sources */,
+				B27486BA160D8D7A005CEF43 /* MyCalloutView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

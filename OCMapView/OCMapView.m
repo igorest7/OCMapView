@@ -6,6 +6,7 @@
 //
 
 #import "OCMapView.h"
+#import "CalloutAnnotation.h"
 
 @interface OCMapView (private)
 - (void)initSetUp;
@@ -68,8 +69,13 @@
 #pragma mark MKMapView implementation
 
 - (void)addAnnotation:(id < MKAnnotation >)annotation{
-    [allAnnotations addObject:annotation];
-    [self doClustering];
+    if ([annotation isKindOfClass:[CalloutAnnotation class]]) {
+        [super addAnnotation:annotation];
+    }else{
+        [allAnnotations addObject:annotation];
+        [self doClustering];
+    }
+   
 }
 
 - (void)addAnnotations:(NSArray *)annotations{
@@ -78,8 +84,13 @@
 }
 
 - (void)removeAnnotation:(id < MKAnnotation >)annotation{
-    [allAnnotations removeObject:annotation];
-    [self doClustering];
+    if ([annotation isKindOfClass:[CalloutAnnotation class]]) {
+        [super removeAnnotation:annotation];
+    }else{
+        [allAnnotations removeObject:annotation];
+        [self doClustering];
+    }
+    
 }
 
 - (void)removeAnnotations:(NSArray *)annotations{
